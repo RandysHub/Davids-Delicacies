@@ -40,13 +40,10 @@ function shoppingCartReducer(state, action) {
     if (existingCartItem) {
 
       if (existingCartItem.quantity <= 1) {
-        let newItems = updatedItems.filter((item) => item.id === existingCartItem.id)
+        let newItems = updatedItems.filter((item) => item.id !== existingCartItem.id)
         return { items: newItems };
       } else {
-        existingCartItem = {
-          ...existingCartItem,
-          quantity: quantity - 1
-        }
+        updatedItems[existingCartItemIndex].quantity--;
         return { items: updatedItems }
 
       }

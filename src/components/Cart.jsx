@@ -6,11 +6,8 @@ export default function Cart() {
   console.log(items)
   return (
     <div>{
-      items.map(item => <h5 onClick={() => {
-        console.log(item)
-        handleDeleteFromCart(item)
-      }}
-      >{item.name}</h5>)
+      items.map(item => <h5 onClick={() => { handleDeleteFromCart(item) }}>
+        {`${item.name}: ${item.quantity}`} </h5>)
 
     }</div>
   )
