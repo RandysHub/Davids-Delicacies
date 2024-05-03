@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
+import { CartContext } from '../shopping-cart-context';
 import Item from './Item';
 export default function Menu() {
-  const [meals, setMeals] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
 
     async function handleFetch() {
+      setIsLoading(true);
       const response = await fetch('http://localhost:3000/meals');
       const resData = await response.json();
       console.log(resData);
 
-      setMeals(resData.meals);
+      setMeals(resData);
       setIsLoading(false);
     }
 
@@ -19,14 +21,13 @@ export default function Menu() {
   }, [])
 
   return (
-    <div id='meals'>
+    <>
       {isLoading && <p>'Loading'</p>}
-      <ul>
+      {meals && !isLoading && <ul id='meals'>
         {meals.map((meal) => {
-          <Item key={meal.id} desc={meal.description} name={meal.name} price={meal.price} />
+          return <Item key={meal.id} meal={meal} />
         })}
-      </ul>
-
-    </div>
+      </ul>}
+    </>
   )
 }

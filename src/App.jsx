@@ -1,9 +1,14 @@
+import Header from "./components/Header";
 import Menu from "./components/Menu";
+import CartContextProvider from "./shopping-cart-context";
 
 function App() {
   return (
     <>
-      <Menu />
+      <CartContextProvider>
+        <Header />
+        <Menu />
+      </CartContextProvider>
     </>
   );
 }
