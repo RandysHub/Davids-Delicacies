@@ -27,7 +27,7 @@ function shoppingCartReducer(state, action) {
       })
     }
 
-    return { items: updatedItems };
+    return { ...state, items: updatedItems };
   }
 
   if (action.type === 'DELETE_ITEM') {
@@ -48,15 +48,15 @@ function shoppingCartReducer(state, action) {
           quantity: existingCartItem.quantity--
         }
         updatedItems[existingCartItemIndex] = updatedItem;
-        return { items: updatedItems }
+        return { ...state, items: updatedItems }
       }
     }
-
-    return { items: updatedItems }
+    //I dont remember why this is here
+    // return { items: updatedItems }
 
   }
 
-  return state
+  return state;
 }
 
 export default function CartContextProvider({ children }) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './UI/Button'
 import { useContext } from 'react';
-import { CartContext } from '../shopping-cart-context';
+import { CartContext } from '../CartContext';
 
 function Item({ meal }) {
   const { items, handleAddToCart } = useContext(CartContext);

@@ -1,5 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { CartContext } from '../shopping-cart-context';
+import React, { useEffect, useState } from 'react'
 import Item from './Item';
 export default function Menu() {
   const [meals, setMeals] = useState([]);
