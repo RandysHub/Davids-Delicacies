@@ -29,7 +29,7 @@ export default function Cart() {
       <p className='cart-total'>{`\$ ${total}`}</p>
       <p className='modal-actions'>
         <Button style='text-only' onClick={hideCart}>Close</Button>
-        <Button onClick={showCheckout}>Go To Checkout</Button>
+        {items.length > 0 && <Button onClick={showCheckout}>Go To Checkout</Button>}
       </p>
     </Modal>
   )

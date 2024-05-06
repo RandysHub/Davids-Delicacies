@@ -1,11 +1,11 @@
 
-export default function Input({ label, textArea, ...props }) {
+export default function Input({ style = '', label, textArea, ...props }) {
   return (
     <>
+      <label className="">{label}</label>
       {textArea ?
         <textarea className={style} {...props} /> :
         <input className={style} {...props} />}
-      <label className="">{label}</label>
     </>
   )
 }

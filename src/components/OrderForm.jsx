@@ -13,7 +13,9 @@ export default function OrderForm() {
   return (
     <Modal open={progress === 'checkout'}>
       <form>
-        <h2>{`/$ ${total}`}</h2>
+        <h2>Checkout</h2>
+        <p>{`$ ${total}`}</p>
+        <Input label={'Full Name'} type='email' />
 
       </form>
     </Modal>
