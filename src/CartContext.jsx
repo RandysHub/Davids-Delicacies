@@ -2,8 +2,10 @@ import { createContext, useReducer } from 'react'
 
 export const CartContext = createContext({
   items: [],
+  total: 0,
   handleAddToCart: () => { },
   handleDeleteFromCart: () => { },
+  handleSetTotal: () => { },
 })
 
 
@@ -51,18 +53,21 @@ function shoppingCartReducer(state, action) {
         return { ...state, items: updatedItems }
       }
     }
-    //I dont remember why this is here
-    // return { items: updatedItems }
-
   }
 
+  if (action.type === 'SET_TOTAL') {
+
+    return { ...state, total: action.payload }
+
+  }
   return state;
 }
 
 export default function CartContextProvider({ children }) {
   const [shoppingCart, dispatch] = useReducer(shoppingCartReducer,
     {
-      items: []
+      items: [],
+      total: 0
     })
 
   function handleAddToCart(item) {
@@ -79,10 +84,19 @@ export default function CartContextProvider({ children }) {
     })
   }
 
+  function handleSetTotal(val) {
+    dispatch({
+      type: 'SET_TOTAL',
+      payload: val
+    })
+  }
+
   const ctxValue = {
     items: shoppingCart.items,
+    total: shoppingCart.total,
     handleAddToCart,
-    handleDeleteFromCart
+    handleDeleteFromCart,
+    handleSetTotal
   }
 
   return (
