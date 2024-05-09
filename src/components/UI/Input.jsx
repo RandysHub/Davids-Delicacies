@@ -1,11 +1,11 @@
 
-export default function Input({ style = '', label, textArea, ...props }) {
+export default function Input({ id, style = '', label, textArea, ...props }) {
   return (
     <p className="control">
-      <label className="">{label}</label>
+      <label htmlFor={id} className="">{label}</label>
       {textArea ?
-        <textarea className={style} {...props} /> :
-        <input className={style} {...props} />}
+        <textarea id={id} className={style} {...props} /> :
+        <input id={id} name={id} className={style} required {...props} />}
     </p>
   )
 }

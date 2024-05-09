@@ -18,7 +18,7 @@ export default function Cart() {
   }, [items])
   console.log(total)
   return (
-    <Modal style='cart' open={progress === 'cart'} onClose={hideCart}>
+    <Modal style='cart' open={progress === 'cart'} onClose={progress === 'cart' ? hideCart : null}>
       <h2>Your Cart</h2>
       <ul>
         {
